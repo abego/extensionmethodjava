@@ -91,6 +91,16 @@ class F extends C {
     }
 }
 
+// added, to dispatch to extension methods
+class B_ext {
+    static void m2(B self, StringBuilder sb) {
+        if (self instanceof C)
+            C_ext.m2((C)self,sb);
+        else
+           self.m2(sb);
+    }
+}
+
 // added, to hold method extensions for class C
 class C_ext {
     // was: C#m2(StringBuilder)

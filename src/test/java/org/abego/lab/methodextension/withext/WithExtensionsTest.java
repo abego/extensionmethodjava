@@ -9,7 +9,8 @@ class WithExtensionsTest {
     void B_m2() {
         StringBuilder sb = new StringBuilder();
 
-        new B().m2(sb);
+        B b = new B();
+        B_ext.m2(b, sb);
 
         assertEquals("" +
                 "B.m2\n" +
@@ -21,7 +22,7 @@ class WithExtensionsTest {
         StringBuilder sb = new StringBuilder();
 
         B b = new D();
-        b.m2(sb);
+        B_ext.m2(b, sb);
 
         assertEquals("" +
                 "D.m2\n" +
@@ -74,6 +75,7 @@ class WithExtensionsTest {
                 "E.m1\n" +
                 "E.m1b\n", sb.toString());
     }
+
     @Test
     void D_m3() {
         StringBuilder sb = new StringBuilder();
