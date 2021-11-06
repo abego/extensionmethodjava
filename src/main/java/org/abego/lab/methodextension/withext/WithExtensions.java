@@ -34,22 +34,6 @@ class C extends B {
 //    }
 }
 
-// added, to hold method extensions for class C
-class C_ext {
-    // was: C#m2(StringBuilder)
-    static void m2_class_C(C self, StringBuilder sb) {
-        sb.append("C.m2\n");
-        // was: super.m2(sb);
-        self.m2_class_B(sb);
-        // was: m1b(sb);
-        self.m1b(sb);
-    }
-
-    static void m2(C self, StringBuilder sb) {
-        m2_class_C(self, sb);
-    }
-}
-
 class D extends C {
     void m1(StringBuilder sb) {
         sb.append("D.m1\n");
@@ -66,6 +50,39 @@ class D extends C {
         sb.append("D.m3\n");
         // was: m2(sb);
         D_ext.m2(this, sb);
+    }
+}
+
+class E extends D {
+    void m1(StringBuilder sb) {
+        sb.append("E.m1\n");
+    }
+
+    void m1b(StringBuilder sb) {
+        sb.append("E.m1b\n");
+    }
+
+    void m2(StringBuilder sb) {
+        sb.append("E.m2\n");
+        // was: super.m2(sb);
+        D_ext.m2_class_D(this, sb);
+    }
+}
+
+
+// added, to hold method extensions for class C
+class C_ext {
+    // was: C#m2(StringBuilder)
+    static void m2_class_C(C self, StringBuilder sb) {
+        sb.append("C.m2\n");
+        // was: super.m2(sb);
+        self.m2_class_B(sb);
+        // was: m1b(sb);
+        self.m1b(sb);
+    }
+
+    static void m2(C self, StringBuilder sb) {
+        m2_class_C(self, sb);
     }
 }
 
@@ -86,18 +103,3 @@ class D_ext {
     }
 }
 
-class E extends D {
-    void m1(StringBuilder sb) {
-        sb.append("E.m1\n");
-    }
-
-    void m1b(StringBuilder sb) {
-        sb.append("E.m1b\n");
-    }
-
-    void m2(StringBuilder sb) {
-        sb.append("E.m2\n");
-        // was: super.m2(sb);
-        D_ext.m2_class_D(this, sb);
-    }
-}
