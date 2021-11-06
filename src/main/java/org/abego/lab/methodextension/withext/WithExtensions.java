@@ -12,17 +12,30 @@ class A {
 
 class B extends A {
 
-    void m2(StringBuilder sb) {
+    void m2_class_B(StringBuilder sb) {
         sb.append("B.m2\n");
         m1(sb);
+    }
+
+    void m2(StringBuilder sb) {
+        m2_class_B(sb);
     }
 }
 
 class C extends B {
+}
+
+class C_ext {
+    private final C self;
+
+    C_ext(C self) {
+        this.self = self;
+    }
+
     void m2(StringBuilder sb) {
         sb.append("C.m2\n");
-        super.m2(sb);
-        m1b(sb);
+        self.m2_class_B(sb);
+        self.m1b(sb);
     }
 }
 
@@ -33,7 +46,7 @@ class D extends C {
 
     void m2(StringBuilder sb) {
         sb.append("D.m2\n");
-        super.m2(sb);
+        new C_ext(this).m2(sb);
     }
 
     void m3(StringBuilder sb) {
