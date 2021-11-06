@@ -57,15 +57,36 @@ class D extends C {
         sb.append("D.m1\n");
     }
 
-    void m2(StringBuilder sb) {
-        sb.append("D.m2\n");
-        // was: super.m2(sb);
-        new C_ext(this).m2(sb);
-    }
+//moved to D_ext
+//    void m2(StringBuilder sb) {
+//        sb.append("D.m2\n");
+//        // was: super.m2(sb);
+//        new C_ext(this).m2(sb);
+//    }
 
     void m3(StringBuilder sb) {
         sb.append("D.m3\n");
-        m2(sb);
+        // was: m2(sb);
+        if (this instanceof E)
+            m2(sb);
+        else
+            new D_ext(this).m2(sb);
+    }
+}
+
+// added, to hold method extensions for class D
+class D_ext {
+    private final D self;
+
+    D_ext(D self) {
+        this.self = self;
+    }
+
+    // was: D#m2(StringBuilder)
+    void m2(StringBuilder sb) {
+        sb.append("D.m2\n");
+        // was: super.m2(sb);
+        new C_ext(self).m2(sb);
     }
 }
 
@@ -80,6 +101,7 @@ class E extends D {
 
     void m2(StringBuilder sb) {
         sb.append("E.m2\n");
-        super.m2(sb);
+        // was: super.m2(sb);
+        new D_ext(this).m2(sb);
     }
 }

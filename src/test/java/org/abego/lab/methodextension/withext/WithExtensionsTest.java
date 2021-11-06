@@ -34,7 +34,8 @@ class WithExtensionsTest {
     void D_m2() {
         StringBuilder sb = new StringBuilder();
 
-        new D().m2(sb);
+        // was: new D().m2(sb);
+        new D_ext(new D()).m2(sb);
 
         assertEquals("" +
                 "D.m2\n" +
