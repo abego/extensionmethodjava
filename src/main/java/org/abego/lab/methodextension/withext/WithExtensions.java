@@ -105,6 +105,8 @@ class C_ext {
     static void m2(C self, StringBuilder sb) {
         if (self instanceof D)
             D_ext.m2_class_D((D)self,sb);
+        else if (self instanceof F)
+            self.m2(sb);
         else
             m2_class_C(self, sb);
     }
