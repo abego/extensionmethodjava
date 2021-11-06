@@ -32,6 +32,12 @@ class C extends B {
 //        super.m2(sb);
 //        m1b(sb);
 //    }
+
+    void m4(StringBuilder sb) {
+        sb.append("C.m4\n");
+        C_ext.m2(this, sb);
+        m1b(sb);
+    }
 }
 
 class D extends C {
@@ -69,6 +75,21 @@ class E extends D {
     }
 }
 
+class F extends C {
+    void m1(StringBuilder sb) {
+        sb.append("F.m1\n");
+    }
+
+    void m1b(StringBuilder sb) {
+        sb.append("F.m1b\n");
+    }
+
+    void m2(StringBuilder sb) {
+        sb.append("F.m2\n");
+        // was: super.m2(sb);
+        C_ext.m2_class_C(this, sb);
+    }
+}
 
 // added, to hold method extensions for class C
 class C_ext {
@@ -82,7 +103,10 @@ class C_ext {
     }
 
     static void m2(C self, StringBuilder sb) {
-        m2_class_C(self, sb);
+        if (self instanceof D)
+            D_ext.m2_class_D((D)self,sb);
+        else
+            m2_class_C(self, sb);
     }
 }
 

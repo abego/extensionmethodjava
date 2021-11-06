@@ -24,6 +24,12 @@ class C extends B {
         super.m2(sb);
         m1b(sb);
     }
+
+    void m4(StringBuilder sb) {
+        sb.append("C.m4\n");
+        m2(sb);
+        m1b(sb);
+    }
 }
 
 class D extends C {
@@ -53,6 +59,21 @@ class E extends D {
 
     void m2(StringBuilder sb) {
         sb.append("E.m2\n");
+        super.m2(sb);
+    }
+}
+
+class F extends C {
+    void m1(StringBuilder sb) {
+        sb.append("F.m1\n");
+    }
+
+    void m1b(StringBuilder sb) {
+        sb.append("F.m1b\n");
+    }
+
+    void m2(StringBuilder sb) {
+        sb.append("F.m2\n");
         super.m2(sb);
     }
 }
