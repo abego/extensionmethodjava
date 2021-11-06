@@ -17,6 +17,21 @@ class NoExtensionsTest {
     }
 
     @Test
+    void D_as_B_m2() {
+        StringBuilder sb = new StringBuilder();
+
+        B b = new D();
+        b.m2(sb);
+
+        assertEquals("" +
+                "D.m2\n" +
+                "C.m2\n" +
+                "B.m2\n" +
+                "D.m1\n" +
+                "A.m1b\n", sb.toString());
+    }
+
+    @Test
     void C_m2() {
         StringBuilder sb = new StringBuilder();
 
