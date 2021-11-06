@@ -65,10 +65,7 @@ class D extends C {
     void m3(StringBuilder sb) {
         sb.append("D.m3\n");
         // was: m2(sb);
-        if (this instanceof E)
-            this.m2(sb);
-        else
-            D_ext.m2(this, sb);
+        D_ext.m2(this, sb);
     }
 }
 
@@ -78,11 +75,14 @@ class D_ext {
     static void m2_class_D(D self, StringBuilder sb) {
         sb.append("D.m2\n");
         // was: super.m2(sb);
-        C_ext.m2(self, sb);
+        C_ext.m2_class_C(self, sb);
     }
 
     static void m2(D self, StringBuilder sb) {
-        m2_class_D(self,sb);
+        if (self instanceof E)
+            self.m2(sb);
+        else
+            m2_class_D(self,sb);
     }
 }
 
@@ -98,6 +98,6 @@ class E extends D {
     void m2(StringBuilder sb) {
         sb.append("E.m2\n");
         // was: super.m2(sb);
-        D_ext.m2(this, sb);
+        D_ext.m2_class_D(this, sb);
     }
 }
