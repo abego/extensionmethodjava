@@ -12,19 +12,29 @@ class A {
 
 class B extends A {
 
+    void m2(StringBuilder sb) {
+        m2_class_B(sb);
+    }
+
+    // extracted from `void m2(StringBuilder sb)`
+    // to directly access the specific method
     void m2_class_B(StringBuilder sb) {
         sb.append("B.m2\n");
         m1(sb);
     }
-
-    void m2(StringBuilder sb) {
-        m2_class_B(sb);
-    }
 }
 
 class C extends B {
+
+//moved to C_ext
+//    void m2(StringBuilder sb) {
+//        sb.append("C.m2\n");
+//        super.m2(sb);
+//        m1b(sb);
+//    }
 }
 
+// added, to hold method extensions for class C
 class C_ext {
     private final C self;
 
@@ -32,9 +42,12 @@ class C_ext {
         this.self = self;
     }
 
+    // was: C#m2(StringBuilder)
     void m2(StringBuilder sb) {
         sb.append("C.m2\n");
+        // was: super.m2(sb);
         self.m2_class_B(sb);
+        // was: m1b(sb);
         self.m1b(sb);
     }
 }
@@ -46,6 +59,7 @@ class D extends C {
 
     void m2(StringBuilder sb) {
         sb.append("D.m2\n");
+        // was: super.m2(sb);
         new C_ext(this).m2(sb);
     }
 

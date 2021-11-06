@@ -20,6 +20,7 @@ class WithExtensionsTest {
     void C_m2() {
         StringBuilder sb = new StringBuilder();
 
+        // was: new C().m2(sb);
         new C_ext(new C()).m2(sb);
 
         assertEquals("" +
