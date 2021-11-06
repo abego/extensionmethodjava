@@ -32,6 +32,19 @@ class NoExtensionsTest {
     }
 
     @Test
+    void G_as_B_m2() {
+        StringBuilder sb = new StringBuilder();
+
+        B b = new G();
+        b.m2(sb);
+
+        assertEquals("" +
+                "G.m2\n" +
+                "B.m2\n" +
+                "G.m1\n", sb.toString());
+    }
+
+    @Test
     void C_m2() {
         StringBuilder sb = new StringBuilder();
 
@@ -131,6 +144,18 @@ class NoExtensionsTest {
                 "F.m1\n" +
                 "F.m1b\n" +
                 "F.m1b\n", sb.toString());
+    }
+
+    @Test
+    void G_m2() {
+        StringBuilder sb = new StringBuilder();
+
+        new G().m2(sb);
+
+        assertEquals("" +
+                "G.m2\n" +
+                "B.m2\n" +
+                "G.m1\n", sb.toString());
     }
 
 }
