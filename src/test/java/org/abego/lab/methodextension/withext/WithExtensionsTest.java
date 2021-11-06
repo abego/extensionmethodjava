@@ -21,7 +21,7 @@ class WithExtensionsTest {
         StringBuilder sb = new StringBuilder();
 
         // was: new C().m2(sb);
-        new C_ext(new C()).m2(sb);
+        C_ext.m2(new C(), sb);
 
         assertEquals("" +
                 "C.m2\n" +
@@ -35,7 +35,7 @@ class WithExtensionsTest {
         StringBuilder sb = new StringBuilder();
 
         // was: new D().m2(sb);
-        new D_ext(new D()).m2(sb);
+        D_ext.m2(new D(), sb);
 
         assertEquals("" +
                 "D.m2\n" +

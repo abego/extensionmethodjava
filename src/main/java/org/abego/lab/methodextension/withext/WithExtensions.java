@@ -36,14 +36,8 @@ class C extends B {
 
 // added, to hold method extensions for class C
 class C_ext {
-    private final C self;
-
-    C_ext(C self) {
-        this.self = self;
-    }
-
     // was: C#m2(StringBuilder)
-    void m2(StringBuilder sb) {
+    static void m2(C self, StringBuilder sb) {
         sb.append("C.m2\n");
         // was: super.m2(sb);
         self.m2_class_B(sb);
@@ -70,23 +64,17 @@ class D extends C {
         if (this instanceof E)
             m2(sb);
         else
-            new D_ext(this).m2(sb);
+            D_ext.m2(this, sb);
     }
 }
 
 // added, to hold method extensions for class D
 class D_ext {
-    private final D self;
-
-    D_ext(D self) {
-        this.self = self;
-    }
-
     // was: D#m2(StringBuilder)
-    void m2(StringBuilder sb) {
+    static void m2(D self, StringBuilder sb) {
         sb.append("D.m2\n");
         // was: super.m2(sb);
-        new C_ext(self).m2(sb);
+        C_ext.m2(self, sb);
     }
 }
 
@@ -102,6 +90,6 @@ class E extends D {
     void m2(StringBuilder sb) {
         sb.append("E.m2\n");
         // was: super.m2(sb);
-        new D_ext(this).m2(sb);
+        D_ext.m2(this, sb);
     }
 }
