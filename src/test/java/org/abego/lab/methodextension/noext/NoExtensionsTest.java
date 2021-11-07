@@ -2,14 +2,15 @@ package org.abego.lab.methodextension.noext;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class NoExtensionsTest {
     @Test
     void B_m2() {
         StringBuilder sb = new StringBuilder();
+        B b = new B();
 
-        new B().m2(sb);
+        b.m2(sb);
 
         assertEquals("" +
                 "B.m2\n" +
@@ -19,8 +20,8 @@ class NoExtensionsTest {
     @Test
     void D_as_B_m2() {
         StringBuilder sb = new StringBuilder();
-
         B b = new D();
+
         b.m2(sb);
 
         assertEquals("" +
@@ -34,8 +35,8 @@ class NoExtensionsTest {
     @Test
     void G_as_B_m2() {
         StringBuilder sb = new StringBuilder();
-
         B b = new G();
+
         b.m2(sb);
 
         assertEquals("" +
@@ -47,8 +48,9 @@ class NoExtensionsTest {
     @Test
     void C_m2() {
         StringBuilder sb = new StringBuilder();
+        C c = new C();
 
-        new C().m2(sb);
+        c.m2(sb);
 
         assertEquals("" +
                 "C.m2\n" +
@@ -60,8 +62,9 @@ class NoExtensionsTest {
     @Test
     void D_m2() {
         StringBuilder sb = new StringBuilder();
+        D d = new D();
 
-        new D().m2(sb);
+        d.m2(sb);
 
         assertEquals("" +
                 "D.m2\n" +
@@ -74,8 +77,9 @@ class NoExtensionsTest {
     @Test
     void E_m2() {
         StringBuilder sb = new StringBuilder();
+        E e = new E();
 
-        new E().m2(sb);
+        e.m2(sb);
 
         assertEquals("" +
                 "E.m2\n" +
@@ -85,11 +89,13 @@ class NoExtensionsTest {
                 "E.m1\n" +
                 "E.m1b\n", sb.toString());
     }
+
     @Test
     void D_m3() {
         StringBuilder sb = new StringBuilder();
+        D d = new D();
 
-        new D().m3(sb);
+        d.m3(sb);
 
         assertEquals("" +
                 "D.m3\n" +
@@ -103,8 +109,9 @@ class NoExtensionsTest {
     @Test
     void E_m3() {
         StringBuilder sb = new StringBuilder();
+        E e = new E();
 
-        new E().m3(sb);
+        e.m3(sb);
 
         assertEquals("" +
                 "D.m3\n" +
@@ -119,8 +126,9 @@ class NoExtensionsTest {
     @Test
     void F_m2() {
         StringBuilder sb = new StringBuilder();
+        F f = new F();
 
-        new F().m2(sb);
+        f.m2(sb);
 
         assertEquals("" +
                 "F.m2\n" +
@@ -133,8 +141,9 @@ class NoExtensionsTest {
     @Test
     void F_m4() {
         StringBuilder sb = new StringBuilder();
+        F f = new F();
 
-        new F().m4(sb);
+        f.m4(sb);
 
         assertEquals("" +
                 "C.m4\n" +
@@ -149,8 +158,9 @@ class NoExtensionsTest {
     @Test
     void G_m2() {
         StringBuilder sb = new StringBuilder();
+        G g = new G();
 
-        new G().m2(sb);
+        g.m2(sb);
 
         assertEquals("" +
                 "G.m2\n" +

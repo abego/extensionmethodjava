@@ -8,8 +8,8 @@ class WithExtensionsTest {
     @Test
     void B_m2() {
         StringBuilder sb = new StringBuilder();
-
         B b = new B();
+
         B_ext.m2(b, sb);
 
         assertEquals("" +
@@ -20,8 +20,8 @@ class WithExtensionsTest {
     @Test
     void D_as_B_m2() {
         StringBuilder sb = new StringBuilder();
-
         B b = new D();
+
         B_ext.m2(b, sb);
 
         assertEquals("" +
@@ -35,8 +35,8 @@ class WithExtensionsTest {
     @Test
     void G_as_B_m2() {
         StringBuilder sb = new StringBuilder();
-
         B b = new G();
+
         B_ext.m2(b, sb);
 
         assertEquals("" +
@@ -48,9 +48,9 @@ class WithExtensionsTest {
     @Test
     void C_m2() {
         StringBuilder sb = new StringBuilder();
+        C c = new C();
 
-        // was: new C().m2(sb);
-        C_ext.m2(new C(), sb);
+        C_ext.m2(c, sb);
 
         assertEquals("" +
                 "C.m2\n" +
@@ -62,9 +62,9 @@ class WithExtensionsTest {
     @Test
     void D_m2() {
         StringBuilder sb = new StringBuilder();
+        D d = new D();
 
-        // was: new D().m2(sb);
-        D_ext.m2(new D(), sb);
+        D_ext.m2(d, sb);
 
         assertEquals("" +
                 "D.m2\n" +
@@ -77,8 +77,9 @@ class WithExtensionsTest {
     @Test
     void E_m2() {
         StringBuilder sb = new StringBuilder();
+        E e = new E();
 
-        new E().m2(sb);
+        e.m2(sb);
 
         assertEquals("" +
                 "E.m2\n" +
@@ -92,8 +93,9 @@ class WithExtensionsTest {
     @Test
     void D_m3() {
         StringBuilder sb = new StringBuilder();
+        D d = new D();
 
-        new D().m3(sb);
+        d.m3(sb);
 
         assertEquals("" +
                 "D.m3\n" +
@@ -107,8 +109,9 @@ class WithExtensionsTest {
     @Test
     void E_m3() {
         StringBuilder sb = new StringBuilder();
+        E e = new E();
 
-        new E().m3(sb);
+        e.m3(sb);
 
         assertEquals("" +
                 "D.m3\n" +
@@ -123,8 +126,9 @@ class WithExtensionsTest {
     @Test
     void F_m2() {
         StringBuilder sb = new StringBuilder();
+        F f = new F();
 
-        new F().m2(sb);
+        f.m2(sb);
 
         assertEquals("" +
                 "F.m2\n" +
@@ -137,8 +141,9 @@ class WithExtensionsTest {
     @Test
     void F_m4() {
         StringBuilder sb = new StringBuilder();
+        F f = new F();
 
-        new F().m4(sb);
+        f.m4(sb);
 
         assertEquals("" +
                 "C.m4\n" +
@@ -150,16 +155,17 @@ class WithExtensionsTest {
                 "F.m1b\n", sb.toString());
     }
 
-
     @Test
     void G_m2() {
         StringBuilder sb = new StringBuilder();
+        G g = new G();
 
-        new G().m2(sb);
+        g.m2(sb);
 
         assertEquals("" +
                 "G.m2\n" +
                 "B.m2\n" +
                 "G.m1\n", sb.toString());
     }
+
 }
