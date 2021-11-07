@@ -7,8 +7,8 @@ definitions. In some languages is even possible to "extend" a runtime/system
 class (like "String") with new methods, exclusively for your application. 
 
 Extensions methods are useful, e.g. if you cannot modify the original class.
-Also extension methods allow for better separation of concerns, more readable 
-code etc.. For more details on Extension methods see 
+Also, extension methods allow for better separation of concerns, more readable 
+code etc. For more details on Extension methods see 
 https://en.wikipedia.org/wiki/Extension_method.
 
 This project demonstrates how to emulate extension methods in Java.
@@ -28,7 +28,7 @@ Instead of adding the method
         ...
     }
 
-to the class `C` you create a new class `C_ext` and add the mehod statically:
+to the class `C` you create a new class `C_ext` and add the method statically:
 
     final class C_ext {
         private C_ext() {}
@@ -118,7 +118,7 @@ just call the static method of the super class' extension class:
     }
 
 Notice this approach is the same, if you are calling `super` from a "normal" 
-method (as in the example above) or from a extension. So if `D#m()` would be 
+method (as in the example above) or from an extension. So if `D#m()` would be 
 implemented as an extension method the calling code would look like this:
 
     ...
@@ -259,8 +259,8 @@ calls `m$class_B()`.
 
 Things get more complicated when we are calling a method that may be 
 implemented by one or more extension methods and may also have one or more
-"normal" implementations. Depending on concrete instance we calling the method
-on we need to call either on of the extension methods or the "normal" 
+"normal" implementations. Depending on the concrete instance we are calling 
+the method for we need to call either the extension method or the "normal" 
 implementation. We already had a glimpse at a similar issue when discussing the
 "Extension method calls 'super' of normal method" case.
 
@@ -287,8 +287,8 @@ To demonstrate the problem consider the following scenario (methods marked with
 Assume you call method `m()` on an object `o` what code do you need to write
 for this invocation? When can you use the simple 'dot' notation, and when do
 you need to use the static methods in the extension classes? And on what
-extension class? This all boils down to the question to the question 
-how we deal with _polymorhism_ in our extension methods world.
+extension class? This all boils down to the question of 
+how we deal with _polymorhism_ in our extension methods approach.
 
 Before we go a little deeper into this issue let us review the code we 
 used when calling `super` to an extension method: 
@@ -505,7 +505,7 @@ Assume we need to call `m()` on an object `o` of type `T`. Here are the rules:
   - when `T` is `C`:
     - define a method `C_ext.m(C)` that calls `C_ext.m$class_C(self)`
     - call `C_ext.m(o)`
-  - otherwise (i.e. `T` is a subclass of `C`)
+  - otherwise, (i.e. `T` is a subclass of `C`)
     - call `C_ext.m(o)`
 - when the implementation of `m()` for `T` is an extension method in class `C`
   and there are sub-implementations  of `m()` from `T` (let _EMC_ be
@@ -520,7 +520,7 @@ Assume we need to call `m()` on an object `o` of type `T`. Here are the rules:
     - otherwise
       - when `T` is `C`:
         - call `C_ext.m$class_C(self)`
-      - otherwise (i.e. `T` is a subclass of `C`)
+      - otherwise, (i.e. `T` is a subclass of `C`)
         - call `C_ext.m(o)`
   - use `T_ext.m(o)` for the invocation.
 
@@ -534,7 +534,7 @@ of class `C`
 #### Extension method calling 'super' to normal method
 
 When an extension method of class `T` contains a `super.m()` call and the first 
-implementation of `m()` in the super classes of `T` is an normal method
+implementation of `m()` in the super classes of `T` is a normal method
 in  class `C`:
 - extract the body of method `C#m()` into a new method `C#m$class_C()`
 - implement the `super` call in the extension method as `self.m$class_C()`
