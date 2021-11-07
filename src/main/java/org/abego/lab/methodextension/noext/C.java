@@ -1,6 +1,8 @@
 package org.abego.lab.methodextension.noext;
 
 class C extends B {
+
+    @Override
     void m2(StringBuilder sb) {
         sb.append("C.m2\n");
         super.m2(sb);

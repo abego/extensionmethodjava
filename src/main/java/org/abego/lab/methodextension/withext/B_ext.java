@@ -1,7 +1,8 @@
 package org.abego.lab.methodextension.withext;
 
-// added, to dispatch to extension methods
-class B_ext {
+final class B_ext {
+    private B_ext() {}
+
     static void m2(B self, StringBuilder sb) {
         if (self instanceof C)
             C_ext.m2((C) self, sb);
