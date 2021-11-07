@@ -3,7 +3,7 @@
 In programming languages like Java a class is defined in a single Java file,
 together with all its methods. Smalltalk and other languages support the concept
 of "Extension Methods". This allows separating method definitions from class 
-definitions. In some languages is even possible to "extend" a runtime/system 
+definitions. In some languages it is even possible to "extend" a runtime/system 
 class (like "String") with new methods, exclusively for your application. 
 
 Extensions methods are useful, e.g. if you cannot modify the original class.
@@ -60,8 +60,8 @@ its `self` parameter:
 #### Is that all?
 
 The idea of implementing extra functionality for a class in separate static 
-methods is very popular. Actually this is the way a lot of "Utilitiy" classes 
-are designed: they provide a set of static methods to implement some "commonly
+methods is very popular. Actually this is the way a lot of "Utility" classes 
+are designed: they provide a set of static methods implementing some "commonly
 used" features, using the arguments passed into the methods.
 
 The tricky part with extension methods starts when you want to cover not only
@@ -100,7 +100,7 @@ we actually know the exact method implementation to be executed with the
 `super.m()` call, no polymorphism involved here.
 
 Translated to our "Extension methods" scenario we can now easily implement a 
-`super` call (assuming both calling and called methods are extension methods):
+`super` call to an extension methods:
 just call the static method of the super class' extension class:
 
 
@@ -118,8 +118,9 @@ just call the static method of the super class' extension class:
     }
 
 Notice this approach is the same, if you are calling `super` from a "normal" 
-method (as in the example above) or from an extension. So if `D#m()` would be 
-implemented as an extension method the calling code would look like this:
+method (as in the example above) or from an extension method. So if `D#m()` 
+would be implemented as an extension method the calling code would look like 
+this:
 
     ...
     class D_ext {
@@ -199,12 +200,12 @@ extension method:
 As you can see we changed the `super` call in `E.m()` to call the extension
 method. 
 
-The tricky part how we translate the `super.m()` call in the `C#m()` to proper
-code in the extension method `C_ext#m(C)`. 
+The tricky part is how we translate the `super.m()` call in the `C#m()` to 
+proper code in the extension method `C_ext#m(C)`. 
 
 Recall that `super.m()` in `C#m()` must call the method `m()` of `C`'s super 
 class, i.e. it must call `B#m()`. But how can we invoke `B#m()` from within
-`C_ext#m(C)`? Just calling `self.m()`, as in the following snippet will not
+`C_ext#m(C)`? Just calling `self.m()`, as in the following snippet, will not
 work:
 
     ...
@@ -216,11 +217,11 @@ work:
     }
     ...
 
-Actually for an instance of class `E` this will lead to an endless loop:
+For an instance of class `E` this will lead to an endless loop:
 
-- in `C_ext#m(C)` in `self` is an `E`
+- in `C_ext#m(C)`  `self` is an `E`
 - class `E` implements `m()`, i.e.  `self.m()` will call `E#m()`
-- `E#m()` call `C_ext#m(C)`
+- `E#m()` calls `C_ext#m(C)`
 - --> endless loop
 
 As it turns out there is no way to directly pass control to `B#m()` from 
@@ -330,10 +331,10 @@ to a new method `C_ext#m$class_C(C)` and use this method instead of
     }
 
 These are simple refactorings that don't change the behaviour. But now we
-have way to handle the "polymorphism" in a quite elegant way.
+have a way to handle the "polymorphism" in a quite elegant way.
 
-Now back to our "Scenario: Extension and normal methods mixed". To get an idea
-what we are looking for let us ask the follwing question: assume we have
+Now back to our "Scenario: Extension and normal methods mixed". To get a better
+idea what we are looking for let us ask the follwing question: assume we have
 an object `o` of type `T` (with a type from the given scenario) how does the 
 calling code for `m()` look like?
 
@@ -430,16 +431,16 @@ in the same way.
 </p>
 <p>As a little difference to the cases for class <code>C</code> and <code>D</code>
 no extension methods are defined for class <code>B</code>, i.e. no extension
-class <code>B_ext</code>. However to make the code more consistent and also have
-a place to move our calling code we introduce such a class <code>B_ext</code> 
-and
+class <code>B_ext</code> exists. However to make the code more consistent and 
+also have a place to move our calling code we introduce such a class 
+<code>B_ext</code> and move the calling code to <code>B_ext.m()</code>.
 </p></td></tr>
 <tr><td><code>A</code></td><td><code>B_ext.m(o)</code></td><td>
-<p>Class <code>A</code>, a class directly extending <code>Object</code>, 
+<p>Class <code>A</code>, an abstract class directly extending <code>Object</code>, 
 defines no method <code>m()</code>. So if we need to call method 
 <code>m()</code> on an instance of <code>A</code> we can delegate this task to 
 <code>A</code>'s subclasses. As the only subclass of <code>A</code> is 
-<code>B</code> we call the  method <code>B_ext.m(o)</code>./p>
+<code>B</code> we call the method <code>B_ext.m(o)</code>./p>
 </td></tr>
 </table>
 
@@ -462,14 +463,14 @@ checked starting at the direct base class of `C`, up to `Object`.
 
 Given a class `C` and a method (signature) `m()` the
 __implemention of m() for C__ is the method `m()` in the implementation class
-of `m()` form `C`.
+of `m()` from `C`.
 
 #### Sub-Implementations of m() from C
 
 Given a class `C` and a method (signature) `m()`. 
 
 The __sub-implementations of m() from C__ are all implementations of `m()` in
-subclasses of `C`,  either as a normal or an extension method.
+subclasses of `C`,  either as normal or extension methods.
 
 ### Rules
 
