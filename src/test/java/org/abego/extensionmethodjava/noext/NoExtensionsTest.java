@@ -1,4 +1,4 @@
-package org.abego.lab.methodextension.noext;
+package org.abego.extensionmethodjava.noext;
 
 import org.junit.jupiter.api.Test;
 

@@ -1,20 +1,19 @@
-package org.abego.lab.methodextension.withext;
+package org.abego.extensionmethodjava.noext;
 
-class G extends B {
+class F extends C {
     @Override
     void m1(StringBuilder sb) {
-        sb.append("G.m1\n");
+        sb.append("F.m1\n");
     }
 
     @Override
     void m1b(StringBuilder sb) {
-        sb.append("G.m1b\n");
+        sb.append("F.m1b\n");
     }
 
     @Override
     void m2(StringBuilder sb) {
-        sb.append("G.m2\n");
+        sb.append("F.m2\n");
         super.m2(sb);
     }
 }
-

@@ -1,4 +1,4 @@
-package org.abego.lab.methodextension.withext;
+package org.abego.extensionmethodjava.withext;
 
 final class B_ext {
     private B_ext() {}

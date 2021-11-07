@@ -1,4 +1,4 @@
-package org.abego.lab.methodextension.noext;
+package org.abego.extensionmethodjava.noext;
 
 class G extends B {
     @Override

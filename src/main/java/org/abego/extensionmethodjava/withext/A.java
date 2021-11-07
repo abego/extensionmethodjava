@@ -1,4 +1,4 @@
-package org.abego.lab.methodextension.noext;
+package org.abego.extensionmethodjava.withext;
 
 abstract class A {
     void m1(StringBuilder sb) {

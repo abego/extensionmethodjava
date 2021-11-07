@@ -21,4 +21,4 @@
  * working on "class level", as classes are also "instances" (of their
  * meta class).
  */
-package org.abego.lab.methodextension.withext;
+package org.abego.extensionmethodjava.withext;
