@@ -602,16 +602,16 @@ the system would look like this:
 
 #### No Extension Methods (`noext`)
 
-The package `org.abego.lab.methodextension.noext` contains the class of the 
+The package `org.abego.extensionmethodjava.noext` contains the classes of the 
 example, using the "normal" Java approach, without extension methods.
 
 In addition, you will find a test class `NoExtensionsTest` that verifies
 the behaviour of the classes and methods in different scenarios, especially
-the calling sequence.
+the calling sequences.
 
 #### With Extension Methods (`withext`)
 
-The package `org.abego.lab.methodextension.withext` contains the example, but
+The package `org.abego.extensionmethodjava.withext` contains the example, but
 this time the methods  `C#m2(...)` and `D#m2(...)` are added via the extension
 method mechanism.
 
