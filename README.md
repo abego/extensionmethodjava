@@ -334,7 +334,7 @@ These are simple refactorings that don't change the behaviour. But now we
 have a way to handle the "polymorphism" in a quite elegant way.
 
 Now back to our "Scenario: Extension and normal methods mixed". To get a better
-idea what we are looking for let us ask the follwing question: assume we have
+idea what we are looking for let us ask the following question: assume we have
 an object `o` of type `T` (with a type from the given scenario) how does the 
 calling code for `m()` look like?
 
